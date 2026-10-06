@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telegram Profile — h.</title>
+  <style>
+    :root { --text:#fff; --muted:rgba(255,255,255,.72); --glass:rgba(10,10,16,.44); }
+    * { box-sizing:border-box; }
+    html, body { width:100%; height:100%; margin:0; }
+    body {
+      overflow:hidden;
+      min-height:100svh;
+      background:#090a0e;
+      color:var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .scene { position:relative; min-height:100svh; display:grid; place-items:center; isolation:isolate; overflow:hidden; }
+    .background { position:absolute; inset:-4%; z-index:-3; filter:blur(5px) saturate(.78) brightness(.66); transform:scale(1.06); }
+    .background svg { display:block; width:100%; height:100%; }
+    .vignette { position:absolute; inset:0; z-index:-2; background:radial-gradient(ellipse at 50% 42%, transparent 5%, rgba(0,0,0,.14) 52%, rgba(0,0,0,.68) 100%), linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.2)); }
+    .grain { position:absolute; inset:0; z-index:-1; opacity:.1; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.42'/%3E%3C/svg%3E"); mix-blend-mode:screen; }
+    .profile {
+      width:min(520px, calc(100% - 38px));
+      padding:42px 36px 34px;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:30px;
+      background:linear-gradient(145deg, rgba(255,255,255,.13), rgba(255,255,255,.035));
+      box-shadow:0 26px 80px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.18);
+      backdrop-filter:blur(13px);
+      -webkit-backdrop-filter:blur(13px);
+      animation:rise .8s ease-out both;
+    }
+    .avatar { width:86px; height:86px; margin:0 auto 26px; display:grid; place-items:center; border-radius:50%; color:#fff; font-size:32px; font-weight:700; letter-spacing:-2px; background:linear-gradient(145deg,#d9a8c9,#6b4f78 65%,#272438); border:2px solid rgba(255,255,255,.72); box-shadow:0 8px 28px rgba(0,0,0,.4), inset 0 1px 10px rgba(255,255,255,.28); }
+    .info { font-size:33px; line-height:1.42; font-weight:400; letter-spacing:-.8px; text-align:left; text-shadow:0 2px 8px rgba(0,0,0,.55); }
+    .line { margin:0; white-space:nowrap; }
+    .label { color:rgba(255,255,255,.88); }
+    .value { color:#fff; }
+    .handle { color:#fff; text-decoration:none; border-bottom:1px solid rgba(255,255,255,.55); transition:border-color .2s, opacity .2s; }
+    .handle:hover { border-color:#fff; opacity:.8; }
+    .coming { margin:30px 0 0; text-align:center; color:var(--muted); font-size:20px; letter-spacing:5px; text-transform:none; text-shadow:0 2px 7px rgba(0,0,0,.5); }
+    .accent { width:52px; height:2px; margin:22px auto 0; border-radius:2px; background:rgba(255,255,255,.72); box-shadow:0 0 15px rgba(255,210,236,.8); }
+    @keyframes rise { from { opacity:0; transform:translateY(18px) scale(.98); } to { opacity:1; transform:translateY(0) scale(1); } }
+    @media (max-width:560px) { .profile { padding:34px 24px 28px; border-radius:25px; } .info { font-size:clamp(23px, 7vw, 33px); letter-spacing:-.5px; } .avatar { width:74px; height:74px; font-size:27px; margin-bottom:21px; } .coming { font-size:16px; letter-spacing:4px; margin-top:24px; } }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div class="background" aria-hidden="true">
+      <svg viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x2="0" y2="1"><stop stop-color="#08090c"/><stop offset=".58" stop-color="#171b20"/><stop offset="1" stop-color="#34343a"/></linearGradient>
+          <linearGradient id="water" x2="0" y2="1"><stop stop-color="#202329"/><stop offset="1" stop-color="#080a0d"/></linearGradient>
+          <linearGradient id="petal" x2="0" y2="1"><stop stop-color="#f2d8e4"/><stop offset="1" stop-color="#a9839a"/></linearGradient>
+          <filter id="soft"><feGaussianBlur stdDeviation="7"/></filter>
+          <filter id="petalSoft"><feGaussianBlur stdDeviation="1.5"/></filter>
+        </defs>
+        <rect width="1400" height="900" fill="url(#sky)"/>
+        <g opacity=".45" filter="url(#soft)" fill="#b4bac0">
+          <rect x="36" y="456" width="8" height="180"/><rect x="105" y="423" width="13" height="225"/><rect x="1280" y="402" width="11" height="239"/><rect x="1350" y="449" width="7" height="190"/>
+          <circle cx="42" cy="453" r="34"/><circle cx="111" cy="423" r="46"/><circle cx="1292" cy="398" r="43"/><circle cx="1353" cy="445" r="30"/>
+        </g>
+        <path d="M0 555 C250 535 400 552 580 570 C850 596 1060 540 1400 560 L1400 900 L0 900Z" fill="url(#water)"/>
+        <g opacity=".5" filter="url(#soft)" fill="#ddd9dd">
+          <path d="M100 590 l48 0 -35 280 -12 0z"/><path d="M252 574 l15 0 50 320 -13 0z"/><path d="M1030 578 l25 0 -25 322 -12 0z"/><path d="M1245 564 l12 0 34 336 -10 0z"/><path d="M1354 580 l10 0 22 300 -8 0z"/>
+        </g>
+        <g fill="none" stroke="#777b80" stroke-width="4" opacity=".42"><path d="M0 590 Q280 565 520 594 T940 585 T1400 592"/><path d="M0 604 Q300 580 550 612 T1000 602 T1400 612"/></g>
+        <path d="M0 525 C240 485 410 510 595 530 C790 551 1050 496 1400 530" fill="none" stroke="#050608" stroke-width="42"/>
+        <path d="M-70 660 C100 555 170 410 270 250 C350 122 460 76 630 80 C855 84 930 191 1100 302 C1200 367 1330 397 1500 380" fill="none" stroke="#080708" stroke-width="42" stroke-linecap="round"/>
+        <path d="M105 480 C230 352 360 310 535 280 C714 250 858 282 1090 389" fill="none" stroke="#080708" stroke-width="25" stroke-linecap="round"/>
+        <path d="M185 370 C324 230 492 188 733 203 C890 212 1002 272 1156 339" fill="none" stroke="#0a090a" stroke-width="17" stroke-linecap="round"/>
+        <path d="M305 246 C388 160 503 122 668 136 C835 150 954 217 1070 276" fill="none" stroke="#0a090a" stroke-width="11" stroke-linecap="round"/>
+        <g fill="url(#petal)" opacity=".9" filter="url(#petalSoft)">
+          <g transform="translate(0,0)"><circle cx="110" cy="350" r="29"/><circle cx="165" cy="288" r="35"/><circle cx="222" cy="235" r="31"/><circle cx="286" cy="191" r="36"/><circle cx="354" cy="151" r="34"/><circle cx="428" cy="111" r="31"/><circle cx="495" cy="105" r="36"/><circle cx="570" cy="112" r="32"/><circle cx="649" cy="126" r="37"/><circle cx="730" cy="151" r="31"/><circle cx="815" cy="187" r="36"/><circle cx="892" cy="226" r="34"/><circle cx="968" cy="267" r="39"/><circle cx="1043" cy="310" r="33"/><circle cx="1115" cy="344" r="28"/></g>
+          <g opacity=".75"><circle cx="155" cy="401" r="25"/><circle cx="224" cy="352" r="35"/><circle cx="311" cy="300" r="33"/><circle cx="412" cy="251" r="38"/><circle cx="521" cy="220" r="31"/><circle cx="628" cy="224" r="35"/><circle cx="745" cy="247" r="32"/><circle cx="860" cy="278" r="38"/><circle cx="970" cy="329" r="34"/><circle cx="1090" cy="384" r="31"/><circle cx="1190" cy="414" r="24"/></g>
+        </g>
+        <g fill="#f1dbe6" opacity=".8"><circle cx="92" cy="165" r="9"/><circle cx="198" cy="110" r="12"/><circle cx="332" cy="74" r="10"/><circle cx="464" cy="42" r="8"/><circle cx="706" cy="72" r="11"/><circle cx="842" cy="114" r="9"/><circle cx="1128" cy="232" r="10"/><circle cx="1264" cy="334" r="8"/><circle cx="530" cy="330" r="9"/><circle cx="776" cy="352" r="8"/></g>
+      </svg>
+    </div>
+    <div class="vignette"></div><div class="grain"></div>
+    <section class="profile" aria-label="Telegram profile">
+      <div class="avatar" aria-hidden="true">h.</div>
+      <div class="info">
+        <p class="line"><span class="label">Name - </span><span class="value">h.</span></p>
+        <p class="line"><span class="label">Number - </span><span class="value">?? +2223339260</span></p>
+        <p class="line"><span class="label">Teg - </span><a class="handle" href="https://t.me/PEKBUZUT" target="_blank" rel="noopener">@PEKBUZUT</a></p>
+      </div>
+      <p class="coming">Coming soon</p>
+      <div class="accent"></div>
+    </section>
+  </main>
+  <script>
+    const profile = document.querySelector('.profile');
+    document.addEventListener('pointermove', (event) => {
+      const x = (event.clientX / innerWidth - .5) * 2;
+      const y = (event.clientY / innerHeight - .5) * 2;
+      profile.style.transform = `perspective(900px) rotateY(${x * 2}deg) rotateX(${y * -1.5}deg)`;
+    });
+    document.addEventListener('pointerleave', () => { profile.style.transform = ''; });
+  </script>
+</body>
+</html>
